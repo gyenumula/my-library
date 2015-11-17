@@ -54,7 +54,7 @@
 		      .attr("r", 10)
 		      .style("fill", function(d) { return color(d.group); })
 		      .call(force.drag);
-		      .on("mouseover", function(d) {  
+		   /*   .on("mouseover", function(d) {  
                 		div.transition()        
                     		.duration(200)      
                     		.style("opacity", .85); 
@@ -64,7 +64,7 @@
                     		.style("top", (d3.event.pageY + 50) + "px")
                     		.style("font-color", "white");
 
-                	}
+                	}*/
 		
 		  node.append("title")
 		      .text(function(d) { return d.name; });
