@@ -19,8 +19,8 @@
 	<script src="//d3js.org/d3.v3.min.js"></script>
 	<script>
 
-		var width = 1280,
-		    height = 800;
+		var width = 1024,
+		    height = 600;
 		
 		var color = d3.scale.category20();
 		
@@ -54,21 +54,29 @@
 		      .attr("r", 10)
 		      .style("fill", function(d) { return color(d.group); })
 		      .call(force.drag);
-		   /*   .on("mouseover", function(d) {  
-                		div.transition()        
-                    		.duration(200)      
-                    		.style("opacity", .85); 
-                		var string = "<img src=" + "source/" + d.name + ".jpg" + "/>";
-                		div .html(string) 
-                    		.style("left", (d3.event.pageX + 10) + "px")     
-                    		.style("top", (d3.event.pageY + 50) + "px")
-                    		.style("font-color", "white");
-
-                	}*/
+		      
 		
 		  node.append("title")
 		      .text(function(d) { return d.name; });
 		
+		  node.on("mouseover", function(d) {  
+                		div.transition()        
+                    		.duration(200)      
+                    		.style("opacity", .85); 
+                		var string = "<img src=" + "source/" + d.name + ".jpg" + "/>";
+                		div.html(string) 
+                    		.style("left", (d3.event.pageX + 10) + "px")     
+                    		.style("top", (d3.event.pageY + 50) + "px")
+                    		.style("font-color", "white");
+
+                	});
+                	
+                  node.on("mouseout", function(d) {    		// when the mouse leaves a circle, do the following
+            			div.transition()                // declare the transition properties to fade-out the div
+            			.duration(500)                  // it shall take 500ms
+            			.style("opacity", 0);           // and go all the way to an opacity of nil
+        		}); 
+		  
 		  force.on("tick", function() {
 		    link.attr("x1", function(d) { return d.source.x; })
 		        .attr("y1", function(d) { return d.source.y; })
