@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-
+<head>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <style>
 
 	.node {
@@ -15,6 +18,14 @@
 
 </style>
 
+<style>
+	  #feedback { font-size: 1.4em; }
+	  #selectable .ui-selecting { background: #FECA40; }
+	  #selectable .ui-selected { background: #F39814; color: white; }
+	  #selectable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+	  #selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
+</style>
+</head>
 <body>
 	<script src="//d3js.org/d3.v3.min.js"></script>
 	<script>
@@ -88,5 +99,24 @@
 		  });
 		});
 		
+		$(function() {
+    			$( "#selectable" ).selectable();
+  		});
+		
 	</script>
+	
+	<ol id="selectable">
+	  	<li class="ui-widget-content">Anthropology</li>
+	  	<li class="ui-widget-content">Philosophy</li>
+	  	<li class="ui-widget-content">Humanities</li>
+	  	<li class="ui-widget-content">Health & Family</li>
+	  	<li class="ui-widget-content">Design Thinking</li>
+	  	<li class="ui-widget-content">Military</li>
+	  	<li class="ui-widget-content">Politics</li>
+	  	<li class="ui-widget-content">Psychology</li>
+	  	<li class="ui-widget-content">Science & Technology</li>
+	  	<li class="ui-widget-content">Society</li>
+	  	<li class="ui-widget-content">Sociology</li>
+	  	<li class="ui-widget-content">Strategy</li>
+	</ol>
 </body>
