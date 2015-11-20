@@ -22,101 +22,108 @@
 	  #feedback { font-size: 1em; }
 	  #selectable .ui-selecting { background: #FECA40; }
 	  #selectable .ui-selected { background: #F39814; color: white; }
-	  #selectable { list-style-type: none; margin: 0; padding: 0; left: 650, bottom: 300, width: 10%; }
+	  #selectable { list-style-type: none; margin: 0; padding: 0; left: 650, bottom: 300, width: 50%; }
 	  #selectable li { margin: 3px; padding: 0.4em; font-size: 1em; height: 18px; }
 </style>
 </head>
 <body>
-	<script src="//d3js.org/d3.v3.min.js"></script>
-	<script>
-
-		var width = 600,
-		    height = 600;
-		
-		var color = d3.scale.category20();
-		
-		var force = d3.layout.force()
-		    .charge(-120)
-		    .linkDistance(150)
-		    .size([width, height]);
-		
-		var svg = d3.select("body").append("svg")
-		    .attr("width", width)
-		    .attr("height", height);
-		
-		d3.json("books.json", function(error, graph) {
-		  if (error) throw error;
-		
-		  force
-		      .nodes(graph.nodes)
-		      .links(graph.links)
-		      .start();
-		
-		  var link = svg.selectAll(".link")
-		      .data(graph.links)
-		    .enter().append("line")
-		      .attr("class", "link")
-		      .style("stroke-width", function(d) { return Math.sqrt(d.value); });
-		
-		  var node = svg.selectAll(".node")
-		      .data(graph.nodes)
-		    .enter().append("circle")
-		      .attr("class", "node")
-		      .attr("r", 10)
-		      .style("fill", function(d) { return color(d.group); })
-		      .call(force.drag);
-		      
-		
-		  node.append("title")
-		      .text(function(d) { return d.name; });
-		
-		  node.on("mouseover", function(d) {  
-                		div.transition()        
-                    		.duration(200)      
-                    		.style("opacity", .85); 
-                		var string = "<img src=" + "source/" + d.name + ".jpg" + "/>";
-                		div.html(string) 
-                    		.style("left", (d3.event.pageX + 10) + "px")     
-                    		.style("top", (d3.event.pageY + 50) + "px")
-                    		.style("font-color", "white");
-
-                	});
-                	
-                  node.on("mouseout", function(d) {    		// when the mouse leaves a circle, do the following
-            			div.transition()                // declare the transition properties to fade-out the div
-            			.duration(500)                  // it shall take 500ms
-            			.style("opacity", 0);           // and go all the way to an opacity of nil
-        		}); 
-		  
-		  force.on("tick", function() {
-		    link.attr("x1", function(d) { return d.source.x; })
-		        .attr("y1", function(d) { return d.source.y; })
-		        .attr("x2", function(d) { return d.target.x; })
-		        .attr("y2", function(d) { return d.target.y; });
-		
-		    node.attr("cx", function(d) { return d.x; })
-		        .attr("cy", function(d) { return d.y; });
-		  });
-		});
-		
-		$(function() {
-    			$( "#selectable" ).selectable();
-  		});
-		
-	</script>
+	<div id = "container" style = "width:100%">
+	    
+	    <div id ="left" style = "float:left; width: 50%;">
+	   
+	   	<script src="//d3js.org/d3.v3.min.js"></script>
+		<script>
 	
-	<ol id="selectable">
-	  	<li class="ui-widget-content">Anthropology</li>
-	  	<li class="ui-widget-content">Philosophy</li>
-	  	<li class="ui-widget-content">Humanities</li>
-	  	<li class="ui-widget-content">Health & Family</li>
-	  	<li class="ui-widget-content">Design Thinking</li>
-	  	<li class="ui-widget-content">Military</li>
-	  	<li class="ui-widget-content">Politics</li>
-	  	<li class="ui-widget-content">Psychology</li>
-	  	<li class="ui-widget-content">Science & Technology</li>
-	  	<li class="ui-widget-content">Society</li>
-	  	<li class="ui-widget-content">Sociology</li>
-	  	<li class="ui-widget-content">Strategy</li>
-	</ol>
+			var width = 600,
+			    height = 600;
+			
+			var color = d3.scale.category20();
+			
+			var force = d3.layout.force()
+			    .charge(-120)
+			    .linkDistance(150)
+			    .size([width, height]);
+			
+			var svg = d3.select("body").append("svg")
+			    .attr("width", width)
+			    .attr("height", height);
+			
+			d3.json("books.json", function(error, graph) {
+			  if (error) throw error;
+			
+			  force
+			      .nodes(graph.nodes)
+			      .links(graph.links)
+			      .start();
+			
+			  var link = svg.selectAll(".link")
+			      .data(graph.links)
+			    .enter().append("line")
+			      .attr("class", "link")
+			      .style("stroke-width", function(d) { return Math.sqrt(d.value); });
+			
+			  var node = svg.selectAll(".node")
+			      .data(graph.nodes)
+			    .enter().append("circle")
+			      .attr("class", "node")
+			      .attr("r", 10)
+			      .style("fill", function(d) { return color(d.group); })
+			      .call(force.drag);
+			      
+			
+			  node.append("title")
+			      .text(function(d) { return d.name; });
+			
+			  node.on("mouseover", function(d) {  
+	                		div.transition()        
+	                    		.duration(200)      
+	                    		.style("opacity", .85); 
+	                		var string = "<img src=" + "source/" + d.name + ".jpg" + "/>";
+	                		div.html(string) 
+	                    		.style("left", (d3.event.pageX + 10) + "px")     
+	                    		.style("top", (d3.event.pageY + 50) + "px")
+	                    		.style("font-color", "white");
+	
+	                	});
+	                	
+	                  node.on("mouseout", function(d) {    		// when the mouse leaves a circle, do the following
+	            			div.transition()                // declare the transition properties to fade-out the div
+	            			.duration(500)                  // it shall take 500ms
+	            			.style("opacity", 0);           // and go all the way to an opacity of nil
+	        		}); 
+			  
+			  force.on("tick", function() {
+			    link.attr("x1", function(d) { return d.source.x; })
+			        .attr("y1", function(d) { return d.source.y; })
+			        .attr("x2", function(d) { return d.target.x; })
+			        .attr("y2", function(d) { return d.target.y; });
+			
+			    node.attr("cx", function(d) { return d.x; })
+			        .attr("cy", function(d) { return d.y; });
+			  });
+			});
+			
+			$(function() {
+	    			$( "#selectable" ).selectable();
+	  		});
+			
+		</script>
+	    </div>
+            <div id = "right" style = "float:left; width: 50%;">
+		<ol id="selectable">
+		  	<li class="ui-widget-content">Anthropology</li>
+		  	<li class="ui-widget-content">Philosophy</li>
+		  	<li class="ui-widget-content">Humanities</li>
+		  	<li class="ui-widget-content">Health & Family</li>
+		  	<li class="ui-widget-content">Design Thinking</li>
+		  	<li class="ui-widget-content">Military</li>
+		  	<li class="ui-widget-content">Politics</li>
+		  	<li class="ui-widget-content">Psychology</li>
+		  	<li class="ui-widget-content">Science & Technology</li>
+		  	<li class="ui-widget-content">Society</li>
+		  	<li class="ui-widget-content">Sociology</li>
+		  	<li class="ui-widget-content">Strategy</li>
+		</ol>
+	    </div>
+	</div>
 </body>
