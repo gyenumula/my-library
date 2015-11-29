@@ -39,23 +39,26 @@
 </head>
 <body bgcolor="#DDD6CF">
 	
-	<img src="covers/bookshelf.jpg" width="624" height="1244" alt="bookshelf" usemap="#bookshelf">
+	<div id="shelf">
+		<img src="covers/bookshelf.jpg" width="624" height="1244" alt="bookshelf" usemap="#bookshelf">
+	
 
-	<map name="bookshelf">
-  		<area shape="rect" coords="123,187,82,126" alt="Uncommon Wisdom">
-  		<area shape="circle" coords="90,58,3" href="mercur.htm" alt="Mercury">
-  		<area shape="circle" coords="124,58,8" href="venus.htm" alt="Venus">
-	</map>
+		<map name="bookshelf">
+  			<area shape="rect" coords="123,187,82,126" alt="Uncommon Wisdom">
+  			<area shape="circle" coords="90,58,3" href="mercur.htm" alt="Mercury">
+  			<area shape="circle" coords="124,58,8" href="venus.htm" alt="Venus">
+		</map>
+	</div>
 
 
-	<div id = "container" style = "width:100%">
+	<div id = "container" style = "width:500; float:left;" >
 	    
 	   <!-- <div id ="left" style = "float:right; width: 50%; display: inline-block;">
 	   -->
 	   	<script src="//d3js.org/d3.v3.min.js"></script>
 		<script>
 	
-			var width = ($( window ).width())* 0.59;
+			var width = 500;
 			    height = 500;
 			
 			var color = d3.scale.category20();
@@ -129,7 +132,7 @@
 	  		});
 	  		
 		</script>
-            <div id = "right" style = "float:right; width: 40%; display: inline-block;">
+            <div id = "right" style = "float:left; width: 40%; display: inline-block;">
 		<ol id="selectable">
 		  	<li style="background:#1f77b4">Anthropology</li>
 		  	<li style="background:#d62728">Philosophy</li>
