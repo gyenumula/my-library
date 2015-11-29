@@ -25,7 +25,7 @@
 	  #feedback { font-size: 1em; }
 	  #selectable .ui-selecting { background: #FECA40; }
 	  #selectable .ui-selected { background: #F39814; color: white; }
-	  #selectable { list-style-type: none; margin: 0px; margin-top: 50px; padding: 0.5em; width: 50%; }
+	  #selectable { list-style-type: none; margin: 0px; margin-top: 0px; padding: 0.5em; width: 500; }
 	  #selectable li { 
 	  	margin: 3px; 
 	  	padding: 5px; 
@@ -67,7 +67,8 @@
 			var svg = d3.select("body").append("svg")
 			    .attr("width", width)
 			    .attr("height", height)
-			    .attr("float", "right");
+			    .attr("float", "right")
+			    .attr("style", "margin-top:120px");
 			
 			d3.json("books.json", function(error, graph) {
 			  if (error) throw error;
@@ -111,7 +112,7 @@
 	  		});
 	  		
 		</script>
-            <div id = "right" style = "float:left; width: 40%; display: inline-block;">
+            <div id = "right" style = "float:left; width: 50%; display: inline-block;">
 		<ol id="selectable">
 		  	<li style="background:#1f77b4">Anthropology</li>
 		  	<li style="background:#d62728">Philosophy</li>
