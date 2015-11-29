@@ -39,7 +39,7 @@
 </head>
 <body bgcolor="#DDD6CF">
 	
-	<div id="shelf">
+	<div id="shelf" style = "width:624; float:left;">
 		<img src="covers/bookshelf.jpg" width="624" height="1244" alt="bookshelf" usemap="#bookshelf">
 	
 
@@ -51,7 +51,7 @@
 	</div>
 
 
-	<div id = "container" style = "width:500; float:left;" >
+	<div id = "container" style = "width:500; float:right;" >
 	    
 	   <!-- <div id ="left" style = "float:right; width: 50%; display: inline-block;">
 	   -->
@@ -70,7 +70,8 @@
 			
 			var svg = d3.select("body").append("svg")
 			    .attr("width", width)
-			    .attr("height", height);
+			    .attr("height", height)
+			    .attr("float", "right");
 			
 			d3.json("books.json", function(error, graph) {
 			  if (error) throw error;
@@ -98,24 +99,6 @@
 			  node.append("title")
 			      .text(function(d) { return d.name; });
 			
-			  node.on("mouseover", function(d) {  
-	                		div.transition()        
-	                    		.duration(200)      
-	                    		.style("opacity", .85); 
-	                		var string = "<img src=" + "source/" + d.name + ".jpg" + "/>";
-	                		div.html(string) 
-	                    		.style("left", (d3.event.pageX + 10) + "px")     
-	                    		.style("top", (d3.event.pageY + 50) + "px")
-	                    		.style("font-color", "white");
-	
-	                	});
-	                	
-	                  node.on("mouseout", function(d) {    		// when the mouse leaves a circle, do the following
-	            			div.transition()                // declare the transition properties to fade-out the div
-	            			.duration(500)                  // it shall take 500ms
-	            			.style("opacity", 0);           // and go all the way to an opacity of nil
-	        		}); 
-			  
 			  force.on("tick", function() {
 			    link.attr("x1", function(d) { return d.source.x; })
 			        .attr("y1", function(d) { return d.source.y; })
