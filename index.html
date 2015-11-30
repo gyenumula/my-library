@@ -43,7 +43,7 @@
 	
 
 		<map name="bookshelf">
-  			<area shape="rect" coords="81,146,144,258" alt="The Story of Philosophy" onMouseOver="getGraph(13)">
+  			<area shape="rect" coords="81,146,144,258" alt="The Story of Philosophy" onMouseOver="connectedNodes(13)">
   	
 		</map>
 	</div>
@@ -179,7 +179,7 @@
 			      .attr("r", 10)
 			      .style("fill", function(d) { return color(d.group); })
 			      .call(force.drag)
-			      .on('dblclick', connectedNodes); //Added code 
+			     // .on('dblclick', connectedNodes); //Added code 
 			
 			  var labels = gnodes.append("text")
 			      .attr("dx", 12)
@@ -217,8 +217,15 @@
 			function neighboring(a, b) {
 			    return linkedByIndex[a.index + "," + b.index];
 			}
-			function connectedNodes() {
+			function connectedNodes(n) {
+			    
+			    var cir;
 			    if (toggle == 0) {
+			    	
+			    	d3.selectAll('g.gnode') 
+    				    .each(function(x) {
+    				    	if(x.node == n)	cir=x.circle;
+      				});
 			        //Reduce the opacity of all but the neighbouring nodes
 			        d = d3.select(this).node().__data__;
 			        node.style("opacity", function (o) {
