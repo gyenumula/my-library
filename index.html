@@ -222,13 +222,13 @@
 			function connectedNodes(n) {
 			    
 			    if (toggle == 0) {
-			    	
+			    	var circ;
 			    	svg.selectAll('circle')
 			    	    .each(function(x) {
-    				    	if(x.index == n)	break;
+    				    	if(x.index == n)	circ=x;
       				});
 			        //Reduce the opacity of all but the neighbouring nodes
-			        d = d3.select(this).node().__data__;
+			        d = d3.select(circ).node().__data__;
 			        node.style("opacity", function (o) {
 			            return neighboring(d, o) | neighboring(o, d) ? 1 : 0.1;
 			        });
