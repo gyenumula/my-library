@@ -157,8 +157,6 @@
 			    .attr("float", "right")
 			    .attr("style", "margin-top:50px");
 	
-			var drawGraph = function(book) {
-			  
 			  force
 			      .nodes(graph.nodes)
 			      .links(graph.links)
@@ -198,11 +196,8 @@
 			        return 'translate(' + [d.x, d.y] + ')'; 
 			    });
 			  });
-			};
-			
-			drawGraph(book);
-
-	    		function getGraph(node){
+	
+	    		function getGraph(){
             			force.stop();
             		}
             		
