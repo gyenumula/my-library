@@ -1,35 +1,43 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <head>
-
-<style>
-
-	.node {
-	  stroke: #fff;
-	  stroke-width: 1.5px;
-	}
-
-	.link {
-	  stroke: #999;
-	  stroke-opacity: .6;
-	}
 	
+	<script type="text/javascript">
+        
+            function getGraph(){
+               
+            }
+            
+      	</script>
 
-</style>
+	<style>
+	
+		.node {
+		  stroke: #fff;
+		  stroke-width: 1.5px;
+		}
+	
+		.link {
+		  stroke: #999;
+		  stroke-opacity: .6;
+		}
+		
+	
+	</style>
 
-<style>
-	  #selectable { 
-	  	width: 500; 
-	  	margin: 3px; 
-	  	margin-left: 50px;
-	  	padding: 15px; 
-	  	text-align: justify; 
-	  	font-family: "Helvetica Neue", Helvetica, "Segoe UI";
-	  	color: black;
-	  	font-size: 0.8em; 
-	  	height: 18px; 
-	  }
-</style>
+	<style>
+		  #selectable { 
+		  	width: 500; 
+		  	margin: 3px; 
+		  	margin-left: 50px;
+		  	padding: 15px; 
+		  	text-align: justify; 
+		  	font-family: "Helvetica Neue", Helvetica, "Segoe UI";
+		  	color: black;
+		  	font-size: 0.8em; 
+		  	height: 18px; 
+		  }
+	</style>
 </head>
 <body bgcolor="#DDD6CF">
 	
@@ -38,9 +46,8 @@
 	
 
 		<map name="bookshelf">
-  			<area shape="rect" coords="123,187,82,126" alt="Uncommon Wisdom">
-  			<area shape="circle" coords="90,58,3" href="mercur.htm" alt="Mercury">
-  			<area shape="circle" coords="124,58,8" href="venus.htm" alt="Venus">
+  			<area shape="rect" coords="21,71,144,258" alt="The Story of Philosophy" onMouseOver="getGraph()">
+  	
 		</map>
 	</div>
 
@@ -49,7 +56,7 @@
 		<script>
 	
 			var width = 500;
-			    height = 400;
+			    height = 500;
 			
 			var color = d3.scale.category20();
 			
@@ -74,7 +81,7 @@
 			
 			  var link = svg.selectAll(".link")
 			      .data(graph.links)
-			    .enter().append("line")
+			     .enter().append("line")
 			      .attr("class", "link")
 			      .style("stroke-width", function(d) { return Math.sqrt(d.value); });
 			
