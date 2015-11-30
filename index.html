@@ -52,7 +52,7 @@
 	   	<script src="http://d3js.org/d3.v2.min.js?2.9.6"></script>
 		<script>
 		
-		var graph = {
+	/*	var graph = {
 			  "nodes":[
 			    {"name":"Sapiens","node":0,"group":1},
 			    {"name":"Being Different","node":1,"group":1},
@@ -140,6 +140,10 @@
 			    {"source":22,"target":21,"value":6}
 			   ]
 			};
+		*/
+		d3.json("graph.json", function(error, json) {
+  			if (error) throw error;
+		}
 	
 			var width = 500;
 			    height = 500;
