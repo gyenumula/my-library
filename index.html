@@ -43,7 +43,9 @@
 	
 
 		<map name="bookshelf">
-  			<area shape="rect" coords="81,146,144,258" alt="The Story of Philosophy" onMouseOver="connectedNodes(13)">
+  			<area shape="rect" coords="81,146,144,258" alt="The Story of Philosophy" 
+  							onMouseOver="getGraph(13)"
+  							onMouseOut="clearGraph(13)"/>
   	
 		</map>
 	</div>
@@ -203,8 +205,8 @@
             		
             		/* Highlighting Part */
             		
-            		//Toggle stores whether the highlighting is on
-			var toggle = 0;
+            		var toggle = 0;
+            		
 			//Create an array logging what is connected to what
 			var linkedByIndex = {};
 			for (i = 0; i < graph.nodes.length; i++) {
@@ -222,28 +224,36 @@
 			    var cir;
 			    if (toggle == 0) {
 			    	
-			    	d3.selectAll('g.gnode') 
-    				    .each(function(x) {
-    				    	if(x.node == n)	cir=x.circle;
+			    	svg.selectAll('circle')
+			    	    .each(function(x) {
+    				    	if(x.__data__.node == n)	cir=x;
       				});
 			        //Reduce the opacity of all but the neighbouring nodes
-			        d = d3.select(this).node().__data__;
+			        d = d3.select(cir).node().__data__;
 			        node.style("opacity", function (o) {
 			            return neighboring(d, o) | neighboring(o, d) ? 1 : 0.1;
 			        });
 			        link.style("opacity", function (o) {
 			            return d.index==o.source.index | d.index==o.target.index ? 1 : 0.1;
 			        });
-			        //Reduce the op
-			        toggle = 1;
+	
 			    } else {
 			        //Put them back to opacity=1
 			        node.style("opacity", 1);
 			        link.style("opacity", 1);
-			        toggle = 0;
+
 			    }
 			}
-            		
+			
+			function getGraph(n) {
+				toggle=0;
+				connectedNodes(n);
+			}
+			function clearGraph(n){
+				toggle=1;
+				connectedNodes(n);
+			}
+			
             		/* Highlightinh End */
             
       		</script>
