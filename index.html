@@ -202,7 +202,8 @@
 			drawGraph();
 
 	    		function getGraph(node){
-            			force.stop();	
+            			force.stop();
+            			d3.select("svg").remove();
                
             		}
             
