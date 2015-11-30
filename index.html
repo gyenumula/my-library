@@ -241,10 +241,11 @@
 			function connectedNodes(n) {
 			    
 			    if (toggle == 0) {
-			    	var circ;
+			    	
 			    	svg.selectAll('circle')
 			    	    .each(function(x) {
-    				    	if(x.index == n)	d=x;
+    				    	if(x.index == n)
+    				    		d=x;
       				});
 			        //Reduce the opacity of all but the neighbouring nodes
 			        node.style("opacity", function (o) {
@@ -256,7 +257,10 @@
 			        labels.style("opacity", function (o) {
 			            return neighboring(d, o) | neighboring(o, d) ? 1 : 0;
 			        });
-	
+			        
+			        //highlight the slected node
+			        d3.select(d).style("stroke-width","2px");
+			     
 			    } else {
 			        //Put them back to opacity=1
 			        node.style("opacity", 1);
