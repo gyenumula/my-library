@@ -43,7 +43,7 @@
 	
 
 		<map name="bookshelf">
-  			<area shape="rect" coords="81,146,144,258" alt="The Story of Philosophy" onMouseOver="getGraph()">
+  			<area shape="rect" coords="81,146,144,258" alt="The Story of Philosophy" onMouseOver="getGraph(13)">
   	
 		</map>
 	</div>
@@ -108,17 +108,15 @@
 			  });
 			});
 			
-		</script>
-		
-		<script type="text/javascript">
-        
-            		function getGraph(){
+	
+	    		function getGraph(node){
+            			force.stop();	
                
             		}
             
       		</script>
 		
-            	<div id = "right" style = "float:left; width: 50%; display: inline-block;">
+            	<div id = "right" style = "float:right; width: 50%; display: inline-block;">
 		<p id="selectable">
 			<img src="colors/1f77b4.png" alt="1f77b4"> Anthropology		
 			<img src="colors/aec7e8.png" alt="aec7e8"> Humanities		
