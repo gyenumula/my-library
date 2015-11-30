@@ -218,11 +218,7 @@
 			    });
 			  });
 	
-	    		function getGraph(){
-            			force.stop();
-            		}
-            		
-            		/* Highlighting Part */
+	    		/* Highlighting Part */
             		
             		var toggle = 0;
             		
@@ -259,7 +255,7 @@
 			        });
 			        
 			        //highlight the slected node
-			        d3.select(d).style("stroke-width",2);
+			        d3.select(d).style("strokeWidth",2);
 			     
 			    } else {
 			        //Put them back to opacity=1
