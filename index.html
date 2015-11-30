@@ -52,9 +52,12 @@
 	   	<script src="http://d3js.org/d3.v2.min.js?2.9.6"></script>
 		<script>
 		
-			d3.json("graph.json", function(error, graph) {
+			var graph;
+			
+			d3.json("graph.json", function(error, json) {
   				if (error) throw error;
-			}
+  				graph = json;
+			});
 	
 			var width = 500;
 			    height = 500;
