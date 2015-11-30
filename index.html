@@ -57,8 +57,7 @@
 			d3.json("graph.json", function(error, json) {
   				if (error) throw error;
   				graph = json;
-			});
-	
+		
 			var width = 500;
 			    height = 500;
 			
@@ -116,6 +115,7 @@
 			    });
 			  });
 			};
+			});
 			
 			drawGraph(graph);
 
