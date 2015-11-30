@@ -2,14 +2,6 @@
 <meta charset="utf-8">
 <head>
 	
-	<script type="text/javascript">
-        
-            function getGraph(){
-               
-            }
-            
-      	</script>
-
 	<style>
 	
 		.node {
@@ -81,21 +73,24 @@
 			
 			  var link = svg.selectAll(".link")
 			      .data(graph.links)
-			     .enter().append("line")
+			      .enter().append("line")
 			      .attr("class", "link")
 			      .style("stroke-width", function(d) { return Math.sqrt(d.value); });
 			
 			  var node = svg.selectAll(".node")
 			      .data(graph.nodes)
-			    .enter().append("circle")
+			      .enter().append("circle")
 			      .attr("class", "node")
 			      .attr("r", 10)
 			      .style("fill", function(d) { return color(d.group); })
 			      .call(force.drag);
 			      
 			
-			  node.append("title")
-			      .text(function(d) { return d.name; });
+			  node.append("text")
+      			      .attr("dx", 12)
+      			      .attr("dy", ".35em")
+      			      .text(function(d) { return d.name; });
+
 			
 			  force.on("tick", function() {
 			    link.attr("x1", function(d) { return d.source.x; })
@@ -109,8 +104,16 @@
 			});
 			
 		</script>
-            <div id = "right" style = "float:left; width: 50%; display: inline-block;">
 		
+		<script type="text/javascript">
+        
+            		function getGraph(){
+               
+            		}
+            
+      		</script>
+		
+            	<div id = "right" style = "float:left; width: 50%; display: inline-block;">
 		<p id="selectable">
 			<img src="colors/1f77b4.png" alt="1f77b4"> Anthropology		
 			<img src="colors/aec7e8.png" alt="aec7e8"> Humanities		
@@ -125,6 +128,5 @@
 			<img src="colors/8c564b.png" alt="8c564b"> Society		
 			<img src="colors/c49c94.png" alt="c49c94"> Sociology		<br><br>
 		</p>
-		
-	    </div>     
+		</div>     
 </body>
