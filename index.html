@@ -157,7 +157,7 @@
 			    .attr("float", "right")
 			    .attr("style", "margin-top:50px");
 	
-			var drawGraph = function(graph) {
+			var drawGraph = function() {
 			  
 			  force
 			      .nodes(graph.nodes)
@@ -199,7 +199,7 @@
 			  });
 			};
 			
-			drawGraph(graph);
+			drawGraph();
 
 	    		function getGraph(node){
             			force.stop();	
