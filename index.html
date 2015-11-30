@@ -54,10 +54,9 @@
 		
 			var graph;
 			
-			d3.json("books.json", function(error, json) {
+			d3.json("books.json", function(error, graph) {
   				if (error) throw error;
-  				graph = json;
-		
+  				
 				var width = 500;
 				    height = 500;
 				
