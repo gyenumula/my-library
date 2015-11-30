@@ -225,10 +225,9 @@
 			    	var circ;
 			    	svg.selectAll('circle')
 			    	    .each(function(x) {
-    				    	if(x.index == n)	circ=x;
+    				    	if(x.index == n)	d=x;
       				});
 			        //Reduce the opacity of all but the neighbouring nodes
-			        d = d3.select(circ).node().__data__;
 			        node.style("opacity", function (o) {
 			            return neighboring(d, o) | neighboring(o, d) ? 1 : 0.1;
 			        });
